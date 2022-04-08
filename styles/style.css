@@ -109,7 +109,7 @@ section.menu {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .options button {
@@ -118,6 +118,7 @@ section.menu {
     font-size: var(--font-size-time-window);
     transition: color 250ms;
     cursor: pointer;
+    margin-bottom: .8rem;
 }
 
 .options button:is(:hover, .active) {
