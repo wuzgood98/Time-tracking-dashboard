@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+:root {
+    /* Primary */
+    --blue: hsl(246, 62%, 58%);
+    --hover: hsl(236, 45%, 26%);
+    --soft-blue: hsl(195, 74%, 62%);
+    --light-orange: hsl(15, 100%, 70%);
+    --light-red: hsl(348, 100%, 68%);
+    --lime-green: hsl(145, 58%, 55%);
+    --violet: hsl(264, 64%, 52%);
+    --soft-orange: hsl(43, 84%, 65%);
+    /* Neutral */
+    --very-dark-blue: hsl(226, 43%, 10%);
+    --dark-blue: hsl(235, 46%, 20%);
+    --desaturated-blue: hsl(235, 45%, 61%);
+    --pale-blue: hsl(236, 100%, 87%);
+    --light-gray: hsl(0, 0%, 90%);
+    --img-border: 3px solid hsl(0, 0%, 90%);
+
+    /* Fonts */
+    --font-size-h1: clamp(2.4rem, 1.8366rem + 1.5023vw, 4rem);
+    --font-size-time-window: 1.8rem;
+    --font-size-activity-name: 1.8rem;
+    --font-size-activity-result: clamp(3.2rem, 2.3549rem + 2.2535vw, 5.6rem);
+    --font-size-activity-window: 1.5rem;
+
+    /* Z-indexes */
+
+    --z-index-top: 10;
+    --z-index-middle: 5;
+    --z-index-bottom: 1;
+
+    /* Border Radius */
+
+    --br: 1.5rem;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background: var(--very-dark-blue);
+    min-height: 100vh;
+    width: 100%;
+    padding: 8.1rem 2.4rem;
+    display: grid;
+    gap: 40px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+section.container {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-auto-rows: max-content;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    margin: 9rem auto;
+}
+
+section.menu {
+    background: var(--dark-blue);
+    border-radius: var(--br);
+    overflow: hidden;
+    width: 100%;
+}
+
+.user {
+    width: 100%;
+    padding: 3.1rem 2.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    background: var(--blue);
+    border-radius: 0 0 var(--br) var(--br);
+}
+
+.user-img {
+    width: 6.4rem;
+    border: .3rem solid var(--light-gray);
+    border-radius: 50%;
+}
+
+.user-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .4rem;
+}
+
+.report-text {
+    color: var(--pale-blue);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.user-name {
+    color: var(--light-gray);
+    font-size: var(--font-size-h1);
+    font-weight: 300;
+}
+
+.options {
+    padding: 2.4rem 2rem 2.5rem 3.3rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.options button {
+    color: var(--pale-blue);
+    width: max-content;
+    font-size: var(--font-size-time-window);
+    transition: color 250ms;
+    cursor: pointer;
+}
+
+.options button:is(:hover, .active) {
+    color: var(--light-gray);
+}
+
+.activity {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 3.8rem 1fr;
+    overflow: hidden;
+    border-radius: var(--br);
+}
+
+.activity:is(.work) {
+    --background: var(--light-orange);
+}
+.activity:is(.play) {
+    --background: var(--soft-blue);
+}
+.activity:is(.study) {
+    --background: var(--light-red);
+}
+.activity:is(.exercise) {
+    --background: var(--lime-green);
+}
+.activity:is(.social) {
+    --background: var(--violet);
+}
+.activity:is(.self-care) {
+    --background: var(--soft-orange);
+}
+
+.activity-bg {
+    grid-row: 1/3;
+    grid-column: 1/2;
+    background: var(--background);
+    display: grid;
+    place-items: start end;
+    height: 70%;
+}
+
+.activity-info {
+    position: relative;
+    z-index: var(--z-index-middle);
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    background: var(--dark-blue);
+    transition: background 250ms, transform 250ms;
+    height: 100%;
+    padding: 2.8rem;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .6rem;
+    cursor: pointer;
+    border-top-left-radius: var(--br);
+    border-top-right-radius: var(--br);
+}
+
+.activity:hover > .activity-info {
+    background: var(--hover);
+}
+
+.activity-header,
+.activity-timeframes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.activity-name {
+    color: var(--light-gray);
+    font-weight: 500;
+}
+
+.activity-options {
+    transition: var(--light-gray) 250ms;
+}
+
+.activity-options:hover > svg path {
+    fill: var(--light-gray);
+}
+
+.activity-current-timeframe {
+    font-size: var(--font-size-activity-result);
+    font-weight: 300;
+    color: var(--light-gray);
+    line-height: 6.6rem;
+}
+
+.activity-previous-timeframe {
+    display: flex;
+    font-size: var(--font-size-activity-window);
+    color: var(--pale-blue);
+}
+
+/* Footer */
+.attribution { 
+    font-size: 11px; text-align: center;
+    color: hsl(228, 34%, 65%);
+}
+
+.attribution a { 
+    color: var(--lime-green);
+    opacity: 80%;
+    text-decoration: none;
+}
+
+@media (max-width: 940px) {
+    section.container {
+        margin: 1rem auto;
+    }
+}
+
+@media (min-width: 500px) {
+    section.container {
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-template-rows: 1fr 1fr;
+        min-height: 51.8rem;
+        gap: 3rem;
+    }
+
+    section.menu {
+        grid-row: 1 / 3;
+    }
+
+    .user {
+        padding: 3.4rem 2.9rem 8rem 2.9rem;
+        flex-flow: column nowrap;
+        align-items: start;
+        gap: 4.3rem;
+        flex: 1 0 auto;
+    }
+
+    .user-img {
+        width: 7.8rem;
+    }
+
+    .user-container {
+        max-width: 60%;
+        gap: .7rem;
+    }
+
+    .user-name {
+        line-height: 4rem;
+    }
+
+    .options {
+        flex-flow: column nowrap;
+        gap: 2.1rem;
+        padding: 2.6rem 3.2rem 3.2rem;
+    }
+
+    .activity {
+        grid-template-rows: 4.5rem 1fr;
+    }
+
+    .activity-info {
+        gap: 2.4rem;
+        padding: 2.9rem 3rem 3.2rem;
+    }
+
+    .activity-timeframes {
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        gap: .8rem;
+    }
+}
+
+@media (min-width: 1110px) {
+    section.container {
+        max-width: 111rem;
+    }
+}
